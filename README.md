@@ -4,4 +4,4 @@ The only other issue, was that I used a pre-saved name for the CSS. (pre-saved f
 all in all the outcome could have been worse. 
 
 
-AI Creation: When I asked Chatgpt to recreate the assigment, it was quite....unqiue? It not only gave its own story and options but went out of its way to create the background and everything as desired. But far deeper and seemingly more advanced. namely it made more options avalible to follow through with more paths as well. 
+AI Creation: When I asked Chatgpt to recreate the assignment, it was quite unique. It not only gave its own story and options but went out of its way to create the background and everything as desired. But it was far deeper and seemingly more advanced. namely, it made more options available to follow through with more paths as well. I have never cared for how easily it seems to create its own story up so quickly. It just seems so off-putting. I like using it to help find errors in my work, but how it can so quickly adapt anything to do what it wants... it's creepy.  IT makes one wonder what has truly been made my human and what is merely a AI algorithm built in mere seconds. 
