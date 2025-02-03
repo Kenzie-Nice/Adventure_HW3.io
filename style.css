@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    color: #A52A2A; /* Light brown for text */
+    color: #A52A2A;
     font-family: 'Arial', sans-serif;
     text-align: center;
     margin: 0;
@@ -14,9 +14,9 @@ body {
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    color: #A52A2A; /* Light brown for text */
+    color: #A52A2A;
 }
 
 h1 {
-    color: #ffcc00; /* Keep the yellow for the title */
+    color: #ffcc00;
 }
