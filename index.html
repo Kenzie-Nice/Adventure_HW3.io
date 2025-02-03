@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apocalypse Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Surviving the Wasteland</h1>
+        <img id="scene-image" src="start.jpg" alt="A desolate wasteland">
+        <p id="story-text">The world as you knew it is gone. Nuclear war has turned the land into a wasteland. You wake up in the ruins of an old bunker. What do you do?</p>
+        <button onclick="choosePath('explore')">Explore the outside</button>
+        <button onclick="choosePath('search')">Search the bunker</button>
+        <button onclick="choosePath('wait')">Stay put and wait</button>
+    </div>
+    
+    <script>
+        function choosePath(choice) {
+            let storyText = document.getElementById("story-text");
+            let sceneImage = document.getElementById("scene-image");
+            
+            if (choice === "explore") {
+                storyText.textContent = "You step outside into the ruins. The air is thick with radiation, but you spot a distant shelter.";
+                sceneImage.src = "explore.jpg";
+            } else if (choice === "search") {
+                storyText.textContent = "You rummage through the bunker. You find some supplies and an old map, hinting at a safe zone.";
+                sceneImage.src = "search.jpg";
+            } else if (choice === "wait") {
+                storyText.textContent = "You decide to wait. Hours pass, then days. Eventually, you hear footsteps outside...";
+                sceneImage.src = "wait.jpg";
+            }
+        }
+    </script>
+</body>
+</html>
