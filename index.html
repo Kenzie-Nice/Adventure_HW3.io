@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,79 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apocalypse Adventure</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #2e2e2e;
+            color: white;
+        }
+        #game-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     <div id="game-container">
         <h1>Surviving the Wasteland</h1>
-        <img id="scene-image" src="post-apocalyptic-apartment-v0-76cwnzs0zk8d1.webp" alt="A desolate wasteland">
-        <p id="story-text">
-            A long time ago, nations could not find equal ground; peace was nothing but a dream for the hopeful. The world as you knew it is long gone. Nuclear war has turned the once lush and lively land into a wasteland.  
-            You wake up in the ruins of an old bunker. You have lived here for some time now, in an uninhabited place, and so far, it's safe. It's early morning, and the sun peeks through your makeshift curtains over the windows. It is warm and muggy—a typical day.  
-            What do you do? Type: "explore", "search", "wait", "investigate", or "rest".
-        </p>
-        
-        <input type="text" id="user-input" placeholder="Type your choice here">
-        <button onclick="startAdventure()">Submit</button>
+        <img id="scene-image" src="post-apocalyptic-apartment-v0-76cwnzs0zk8d1.webp" alt="A desolate wasteland" width="100%">
+        <p id="story-text">A long time ago, nations could not find equal grounds; peace was nothing but a dream for the hopeful. The world as you knew it is long gone. Nuclear war has turned the once lush and lively land into a wasteland. You wake up in the ruins of an old bunker.
+            You have lived here for some time now, in an uninhabited place, and so far, it's safe. It's early morning, and the sun peeks through your makeshift curtains over the windows. It is warm and muggy—a typical day. 
+            What do you do?</p>
+        <input type="text" id="user-input" placeholder="Type your choice...">
+        <button onclick="processChoice()">Submit</button>
         <button onclick="restartGame()">Restart</button>
     </div>
     
     <script>
-        function startAdventure() {
-            let choice = document.getElementById("user-input").value.toLowerCase().trim();
-            let storyText = document.getElementById("story-text");
-            let sceneImage = document.getElementById("scene-image");
-
-            if (!choice) {
-                storyText.textContent = "Please enter a choice to continue your journey.";
-                return;
-            }
-
-            switch (choice) {
-                case "explore":
-                    updateStory(
-                        "You step outside into the ruins. The air is thick and warm; The area is surrounded by overgrown weeds, bushes, and old military buildings covered in thick vines. In the distance, you hear a shrill cry of...something.",
-                        "fallout-3-end-pustosh.webp"
-                    );
-                    break;
-                case "search":
-                    updateStory(
-                        "You rummage through your supplies. You find old food cans. Still good. With bandages, a medkit, a hunting knife, and extra weapon ammo, your supplies seem in order but are greatly limited. You think it might be a good day to brave the wilds and search for more items.",
-                        "7bfa767e-9e32-448f-84c1-3dd320a29455._SL480_.jpg"
-                    );
-                    break;
-                case "wait":
-                    updateStory(
-                        "You decide to stay home. A nice day should be enjoyed, especially as rare as they can be in this land. You sit in your 'home' and relax... but then a shrill cry in the distance catches your attention.",
-                        "post-apocalyptic-apartment-v0-76cwnzs0zk8d1.webp"
-                    );
-                    break;
-                case "investigate":
-                    updateStory(
-                        "You grab your gear and follow the distant sound. You move cautiously through the wasteland, avoiding open areas. You stumble upon a wrecked convoy with fresh footprints leading away. Someone else is out here...",
-                        "apocalypse-road.jpg"
-                    );
-                    break;
-                case "rest":
-                    updateStory(
-                        "You decide to rest for a while. The world outside is dangerous, but exhaustion is just as deadly. You close your eyes... until a sudden, loud bang outside startles you awake.",
-                        "bunker-interior.jpg"
-                    );
-                    break;
-                default:
-                    storyText.textContent = "That choice doesn't seem valid. Try again.";
-            }
+        function getStory(choice) {
+            let responses = {
+                "explore": {
+                    text: "You step outside into the ruins. The air is thick and warm; the area is surrounded by overgrown weeds and bushes and old military buildings covered in thick vines. In the distance, you hear a shrill cry of... something..",
+                    image: "fallout-3-end-pustosh.webp"
+                },
+                "search": {
+                    text: "You rummage through your supplies. You find old food cans. Still good. With bandages, a medkit, a hunting knife, and extra weapon ammo, your supplies still seem in order but are greatly limited. Maybe it's time to brave the wilds for more.",
+                    image: "7bfa767e-9e32-448f-84c1-3dd320a29455._SL480_.jpg"
+                },
+                "wait": {
+                    text: "You decide to stay home. A nice day should be enjoyed, especially as rare as they can be in this land. You sit in your 'home' and relax... but then a shrill cry in the distance catches your attention.",
+                    image: "post-apocalyptic-apartment-v0-76cwnzs0zk8d1.webp"
+                },
+                "follow the sound": {
+                    text: "You cautiously move toward the sound, weapon in hand. As you approach you see a beast, if thats what it could be called. It is a disgusting creature that has been walking longer than it was alive. Do you attack or keep hidden?",
+                    image: "wounded-survivor.webp"
+                },
+                "fortify the bunker": {
+                    text: "You decide to make your bunker more secure. You spend hours reinforcing doors, setting up traps, and ensuring you have enough supplies. As night falls, you feel a little safer... for now.",
+                    image: "bunker-fortified.webp"
+                }
+            };
+            return responses[choice.toLowerCase()] || { text: "That is not an option. Try again.", image: "error-image.webp" };
         }
 
-        function updateStory(text, imageSrc) {
-            document.getElementById("story-text").textContent = text;
-            document.getElementById("scene-image").src = imageSrc;
+        function processChoice() {
+            let userInput = document.getElementById("user-input").value.trim().toLowerCase();
+            let result = getStory(userInput);
+            document.getElementById("story-text").textContent = result.text;
+            document.getElementById("scene-image").src = result.image;
+            document.body.style.backgroundColor = userInput === "explore" ? "#3b3b3b" : "#2e2e2e"; 
         }
 
         function restartGame() {
-            document.getElementById("story-text").textContent = 
-                "A long time ago, nations could not find equal ground; peace was nothing but a dream for the hopeful. The world as you knew it is long gone. Nuclear war has turned the once lush and lively land into a wasteland. You wake up in the ruins of an old bunker. What do you do? Type: 'explore', 'search', 'wait', 'investigate', or 'rest'.";
+            document.getElementById("story-text").textContent = "A long time ago, nations could not find equal grounds; peace was nothing but a dream for the hopeful. The world as you knew it is long gone. Nuclear war has turned the once lush and lively land into a wasteland. You wake up in the ruins of an old bunker. You have lived here for some time now, in an uninhabited place, and so far, it's safe. It's early morning, and the sun peeks through your makeshift curtains over the windows. It is warm and muggy—a typical day. What do you do?";
             document.getElementById("scene-image").src = "post-apocalyptic-apartment-v0-76cwnzs0zk8d1.webp";
             document.getElementById("user-input").value = "";
+            document.body.style.backgroundColor = "#2e2e2e";
         }
     </script>
 </body>
